@@ -62,17 +62,17 @@ namespace refactorytryout.Controllers
         //     return Ok(order);
         // }
         [HttpPost]
-        public IActionResult Post(string name, int price){
-            var product = new Product{
-                Name = name,
-                Price = price,
+        public IActionResult Post(Product product){
+            product = new Product{
+                Name = product.Name,
+                Price = product.Price,
                 Created_at = DateTime.Now,
                 Updated_at = DateTime.Now
             };
             _context.Product.Add(product);
             _context.SaveChanges();
             return Ok(new {
-                message = "success retrieve data", 
+                message = "success send data", 
                 status = true,
                 data = product
             });

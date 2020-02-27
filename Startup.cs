@@ -29,7 +29,8 @@ namespace refactorytryout
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddDbContext<OrdersContext>(options => options.UseNpgsql("Host=127.0.0.1;Username=postgres;password=docker;Database=order2_db"));
+            services.AddDbContext<OrdersContext>(options => options.UseNpgsql(
+                "Host=ec2-34-200-116-132.compute-1.amazonaws.com;Username=yvwdhialtrvgqx;password=f21a99376123bd5ac09b4e96fabc5890783107f92528fb2a0f7a5c262b67d68a;Database=dbtljdsp8jr8qr;SSL Mode=Require;Trust Server Certificate=true"));
             // services.AddTransient<IDatabaseOrder, DatabaseOrder>();
             services.AddControllers();
         }

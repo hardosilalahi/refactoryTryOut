@@ -62,17 +62,17 @@ namespace refactorytryout.Controllers
         //     return Ok(order);
         // }
         [HttpPost]
-        public IActionResult Post(string fullName, string phoneNumber){
-            var driver = new Driver{
-                Full_name = fullName,
-                Phone_number = phoneNumber,
+        public IActionResult Post(Driver driver){
+            driver = new Driver{
+                Full_name = driver.Full_name,
+                Phone_number = driver.Phone_number,
                 Created_at = DateTime.Now,
                 Updated_at = DateTime.Now
             };
             _context.Driver.Add(driver);
             _context.SaveChanges();
             return Ok(new {
-                message = "success retrieve data", 
+                message = "success send data", 
                 status = true,
                 data = driver
             });

@@ -63,19 +63,19 @@ namespace refactorytryout.Controllers
         // }
 
         [HttpPost]
-        public IActionResult Post(string fullName, string username, string email, string phoneNumber){
-            var customer = new Customer{
-                Full_name = fullName,
-                Username = username,
-                Email = email,
-                Phone_number = phoneNumber,
+        public IActionResult Post(Customer customer){
+            customer = new Customer{
+                Full_name = customer.Full_name,
+                Username = customer.Username,
+                Email = customer.Email,
+                Phone_number = customer.Phone_number,
                 Created_at = DateTime.Now,
                 Updated_at = DateTime.Now
             };
             _context.Customer.Add(customer);
             _context.SaveChanges();
             return Ok(new {
-                message = "success retrieve data", 
+                message = "success send data", 
                 status = true,
                 data = customer
             });

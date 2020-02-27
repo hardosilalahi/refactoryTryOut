@@ -64,18 +64,18 @@ namespace refactorytryout.Controllers
         //     return Ok(order);
         // }
         [HttpPost]
-        public IActionResult Post(int custId, Order_status status, int driveId){
-            var order = new Order{
-                CustomerId = custId,
-                Status = status,
-                DriverId = driveId,
+        public IActionResult Post(Order order){
+            order = new Order{
+                CustomerId = order.CustomerId,
+                Status = order.Status,
+                DriverId = order.DriverId,
                 Created_at = DateTime.Now,
                 Updated_at = DateTime.Now
             };
             _context.Order.Add(order);
             _context.SaveChanges();
             return Ok(new {
-                message = "success retrieve data", 
+                message = "success send data", 
                 status = true,
                 data = order
             });
