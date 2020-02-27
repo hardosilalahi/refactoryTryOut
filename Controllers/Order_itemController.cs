@@ -54,13 +54,6 @@ namespace refactorytryout.Controllers
             return Ok(order_item);
         }
 
-        // [HttpPatch("{id}")]
-        // public IActionResult Put(int id, Order_status status){
-        //     var order = _context.Order.First(i => i.Id == id);
-        //     order.Status = status;
-        //     _context.SaveChanges();
-        //     return Ok(order);
-        // }
         [HttpPost]
         public IActionResult Post(Order_item order_item){
             order_item = new Order_item{

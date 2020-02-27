@@ -54,13 +54,20 @@ namespace refactorytryout.Controllers
             return Ok(product);
         }
 
-        // [HttpPatch("{id}")]
-        // public IActionResult Put(int id, Order_status status){
-        //     var order = _context.Order.First(i => i.Id == id);
-        //     order.Status = status;
-        //     _context.SaveChanges();
-        //     return Ok(order);
-        // }
+      [HttpPut("{id}")]
+        public IActionResult Put(int id, Product productPut){
+            var product = _context.Product.First(i => i.Id == id);
+
+            product.Name = productPut.Name;
+            product.Price = productPut.Price;
+            product.Created_at = product.Created_at;
+            product.Updated_at = DateTime.Now;
+
+            _context.Product.Update(product);
+            _context.SaveChanges();
+            return Ok(product);
+        }
+
         [HttpPost]
         public IActionResult Post(Product product){
             product = new Product{

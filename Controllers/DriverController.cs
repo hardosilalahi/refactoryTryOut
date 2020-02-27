@@ -54,13 +54,20 @@ namespace refactorytryout.Controllers
             return Ok(driver);
         }
 
-        // [HttpPatch("{id}")]
-        // public IActionResult Put(int id, Order_status status){
-        //     var order = _context.Order.First(i => i.Id == id);
-        //     order.Status = status;
-        //     _context.SaveChanges();
-        //     return Ok(order);
-        // }
+      [HttpPut("{id}")]
+        public IActionResult Put(int id, Driver driverPut){
+            var driver = _context.Driver.First(i => i.Id == id);
+
+            driver.Full_name = driverPut.Full_name;
+            driver.Phone_number = driverPut.Phone_number;
+            driver.Created_at = driver.Created_at;
+            driver.Updated_at = DateTime.Now;
+
+            _context.Driver.Update(driver);
+            _context.SaveChanges();
+            return Ok(driver);
+        }
+
         [HttpPost]
         public IActionResult Post(Driver driver){
             driver = new Driver{
